@@ -5,12 +5,18 @@ import React, { useState } from 'react'
 
 export default function BirthdayCard() {
     const [message, setMessage] = useState('');
+    const [displayMessage, setDisplayMesage] = useState('');
 
     const handleInputChange = (text) => {
         setMessage(text);
     }
+    const handleSendWishes =()=>{
+        setDisplayMesage(message);
+    }
+    
     return (
-        <ImageBackground source={require('../assets/back.jpg')} style={styles.background}>
+        <ImageBackground source={require('../assets/back.jpg')} style={styles.background} resizeMode='cover'>
+            
             <View style={styles.container} >
 
                 <Text style={styles.header}>Happy Birthday!</Text>
@@ -20,16 +26,24 @@ export default function BirthdayCard() {
                     style={styles.input}
                     placeholder="Enter message"
                     onChangeText={handleInputChange}
+                    multiline={true}
+                    
                 />
-                <Text style={styles.msg}>{message}</Text>
+               
 
                 <TouchableOpacity
                     style={styles.button}
-                    title="Send Wishes"
-                    onPress={() => alert(message)}
+                    onPress={handleSendWishes}
+                    
                 >
                     <Text style={styles.buttonText}>Send Wishes</Text>
                 </TouchableOpacity>
+                
+                {displayMessage ? (
+                    <View style={styles.msgContainer}>
+                    <Text style={styles.msg} multiline={true} >{displayMessage}</Text>
+                    </View>
+                ):null}
             </View>
         </ImageBackground>
     )
@@ -38,13 +52,16 @@ export default function BirthdayCard() {
 const styles = StyleSheet.create({
     background: {
         flex: 1,
-        resizeMode: 'cover',
+       
+       
+       
     },
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
+        width: '100%'
 
 
     },
@@ -63,7 +80,7 @@ const styles = StyleSheet.create({
     input: {
         width: '100%',
         borderRadius: 20,
-        height: 40,
+        height: 100,
         borderWidth: 1,
         borderColor: 'gray',
         textAlign: 'center',
@@ -71,17 +88,26 @@ const styles = StyleSheet.create({
 
 
     },
+    msgContainer:{
+        width: '100%',
+        height: 'auto',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
+
+
+    },
     msg: {
         fontSize: 25,
         fontFamily: 'Handjet-Light',
-        textAlign: 'center',
+        textAlign: 'left',
 
 
     },
     button: {
         borderRadius: 10,
         backgroundColor: '#5F9EA0',
-        width: '80%',
+        width: '100%',
         height: 30,
         justifyContent: 'center',
         alignItems: 'center'
