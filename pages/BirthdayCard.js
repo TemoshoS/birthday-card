@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#F0F8FF'
+        backgroundColor: '#F0F8FF',
+        width: '100%'
 
 
 
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
 
     },
     input: {
-        width: '100%',
+        width: '50%',
         borderRadius: 20,
         height: 50,
         borderWidth: 1,
@@ -137,17 +138,18 @@ const styles = StyleSheet.create({
     msg: {
         fontSize: 25,
         fontFamily: 'Handjet-Light',
-        textAlign: 'right',
+        textAlign: 'center',
 
 
     },
     button: {
         borderRadius: 10,
         backgroundColor: '#5F9EA0',
-        width: '100%',
+        width: '50%',
         height: 30,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        
 
 
 
@@ -155,6 +157,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         fontWeight: 'bold',
+        
 
     }
 })
